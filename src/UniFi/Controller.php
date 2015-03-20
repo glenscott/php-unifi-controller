@@ -26,7 +26,7 @@ class Controller
         $ch = curl_init();
 
         if (!$ch) {
-            throw new Exception("Could not initialise curl session");
+            throw new \Exception("Could not initialise curl session");
         }
 
         // @todo -- race conditions, so generate random cookie file for each session
@@ -42,11 +42,11 @@ class Controller
             );
 
         if (!curl_setopt_array($ch, $options)) {
-            throw new Exception("Could not set curl options");
+            throw new \Exception("Could not set curl options");
         }
 
         if (!curl_exec($ch)) {
-            throw new Exception("Could not execute curl session (login): " . curl_error($ch));
+            throw new \Exception("Could not execute curl session (login): " . curl_error($ch));
         }
 
         // Send user to authorize and the time allowed
@@ -62,7 +62,7 @@ class Controller
 
         $res = curl_exec($ch);
         if (!$res) {
-            throw new Exception("Could not execute curl session (authorize-guest)");
+            throw new \Exception("Could not execute curl session (authorize-guest)");
         }
 
         // Logout of the UniFi Controller
@@ -70,7 +70,7 @@ class Controller
         curl_setopt($ch, CURLOPT_URL, $this->server . '/logout');
         
         if (!curl_exec($ch)) {
-            throw new Exception("Could not execute curl session (logout)");
+            throw new \Exception("Could not execute curl session (logout)");
         }
 
         curl_close($ch);
