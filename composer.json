@@ -1,0 +1,20 @@
+{
+	"name": "glenscott/unifi-controller",
+	"description": "Authorise guest logins via the Ubiquiti Networks UniFi controller",
+	"license": "MIT",
+	"authors": [
+	    {
+	        "name": "Glen Scott",
+	        "email": "glen@glenscott.co.uk"
+	    }
+	],
+	"require": {
+	    "php": ">=5.3.0",
+	    "ext-curl": "*"
+	},
+	"autoload": {
+	    "psr-4": {
+	        "UniFi\\" : "src/UniFi"
+	    }
+	}
+}
